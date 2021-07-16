@@ -29,11 +29,11 @@ build_docker: Dockerfile
 	docker build $(CURDIR) -t $(docker_name):$(docker_tag)
 
 $(DOWNLOAD_DIR) $(BUILD_DIR):
-	mkdir -p $@
+	mkdir -p -m a+rw $@
 
 # Run the docker with $(1) as a command
 docker_run = docker run --rm -v $(CURDIR):/mnt/project \
-		-it --user $(UID):$(GID) \
+		-it \
 		$(docker_name):$(docker_tag) \
 		$(1)
 
