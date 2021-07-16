@@ -10,6 +10,9 @@ project_git_repo = https://github.com/openbmc/openbmc
 project_git_branch = master
 project_dir = $(CURDIR)/openbmc
 
+UID ?= $(shell id -u)
+GID ?= $(shell id -g)
+
 all: build_obmc
 
 $(project_dir):
@@ -30,7 +33,9 @@ $(DOWNLOAD_DIR) $(BUILD_DIR):
 
 # Run the docker with $(1) as a command
 docker_run = docker run --rm -v $(CURDIR):/mnt/project \
-		-it $(docker_name):$(docker_tag) $(1)
+		-it --user $(UID):$(GID) \
+		$(docker_name):$(docker_tag) \
+		$(1)
 
 .PHONY: docker_bash
 docker_bash: build_docker $(DOWNLOAD_DIR) $(BUILD_DIR) update

@@ -4,10 +4,6 @@ LABEL maintainer="Arthur Heymans <arthur.heymans@9elements.com>"
 RUN apt-get update
 RUN apt-get install -y locales
 RUN locale-gen en_US.UTF-8
-RUN adduser --quiet --disabled-password --shell /bin/bash --home /home/devuser --gecos "User" devuser && \
-    echo "devuser:dev" | chpasswd && \
-    usermod -aG sudo devuser
-
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Brussels
@@ -19,5 +15,4 @@ RUN apt-get install -y \
 	g++ desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial \
 	autoconf automake groff curl lzop asciidoc
 
-USER devuser
 CMD ["bash"]
