@@ -38,11 +38,11 @@ docker_run = docker run --rm -v $(CURDIR):/mnt/project \
 		$(1)
 
 .PHONY: docker_bash
-docker_bash: build_docker $(DOWNLOAD_DIR) $(BUILD_DIR) update
+docker_bash: $(DOWNLOAD_DIR) $(BUILD_DIR) update
 	$(call docker_run, bash)
 
 .PHONY: build_obmc
-build_obmc: build_docker update $(DOWNLOAD_DIR) $(BUILD_DIR) $(CURDIR)/run.sh
+build_obmc: update $(DOWNLOAD_DIR) $(BUILD_DIR) $(CURDIR)/run.sh
 	$(call docker_run, /mnt/project/run.sh $(TARGET))
 
 .PHONY: clean
