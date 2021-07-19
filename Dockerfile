@@ -9,7 +9,8 @@ RUN apt update && \
     apt install -y sudo curl git-core gnupg zsh wget vim locales fonts-powerline && \
     locale-gen en_US.UTF-8
 RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
-    adduser --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" devuser -u ${USER_ID} -g ${GROUP_ID} && \
+    groupadd -g ${GROUP_ID} devuser && \
+    adduser --quiet --disabled-password --shell /bin/zsh --home /home/devuser --gecos "User" devuser --uid ${USER_ID} --gid ${GROUP_ID} && \
     echo "devuser:dev" | chpasswd && \
     usermod -aG sudo devuser; \
     fi

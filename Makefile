@@ -26,8 +26,8 @@ update: $(project_dir)
 
 .PHONY: build_docker
 build_docker: Dockerfile
-	docker build --build-arg USER_ID=$(id -u ${USER}) \
-	--build-arg GROUP_ID=$(id -g ${USER}) \
+	docker build --build-arg USER_ID=$(UID) \
+	--build-arg GROUP_ID=$(GID) \
 	$(CURDIR) -t $(docker_name):$(docker_tag)
 
 $(DOWNLOAD_DIR) $(BUILD_DIR):
