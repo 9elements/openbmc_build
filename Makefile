@@ -3,7 +3,7 @@ BUILD_DIR ?= $(CURDIR)/build
 TARGET ?= e3c246d4i
 
 docker_name = openbmc_build
-docker_tag = v1
+docker_tag = v2
 
 project_name = openbmc
 project_git_repo = https://github.com/openbmc/openbmc
@@ -26,7 +26,9 @@ update: $(project_dir)
 
 .PHONY: build_docker
 build_docker: Dockerfile
-	docker build $(CURDIR) -t $(docker_name):$(docker_tag)
+	docker build --build-arg USER_ID=$(id -u ${USER}) \
+	--build-arg GROUP_ID=$(id -g ${USER}) \
+	$(CURDIR) -t $(docker_name):$(docker_tag)
 
 $(DOWNLOAD_DIR) $(BUILD_DIR):
 	mkdir -p -m a+rw $@
