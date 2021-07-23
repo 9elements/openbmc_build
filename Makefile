@@ -6,8 +6,8 @@ docker_name = openbmc_build
 docker_tag = v2
 
 project_name = openbmc
-project_git_repo = https://github.com/openbmc/openbmc
-project_git_branch = master
+project_git_repo = https://github.com/9elements/openbmc
+project_git_branch = ibm_covi
 project_dir = $(CURDIR)/openbmc
 
 UID ?= $(shell id -u)
