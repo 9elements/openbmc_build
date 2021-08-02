@@ -34,7 +34,7 @@ $(DOWNLOAD_DIR) $(BUILD_DIR):
 	mkdir -p -m a+rw $@
 
 # Run the docker with $(1) as a command
-docker_run = docker run --rm -v $(CURDIR):/mnt/project \
+docker_run = docker run --rm -v $(CURDIR):/mnt/project:Z \
 		-it \
 		$(docker_name):$(docker_tag) \
 		$(1)
