@@ -44,7 +44,7 @@ docker_bash: $(DOWNLOAD_DIR) $(BUILD_DIR)
 	$(call docker_run, bash)
 
 .PHONY: build_obmc
-build_obmc: $(DOWNLOAD_DIR) $(BUILD_DIR) $(CURDIR)/run.sh
+build_obmc: $(DOWNLOAD_DIR) $(BUILD_DIR) $(CURDIR)/run.sh | $(project_dir)
 	$(call docker_run, /mnt/project/run.sh $(TARGET))
 
 .PHONY: clean
