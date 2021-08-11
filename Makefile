@@ -40,7 +40,7 @@ docker_run = docker run --rm -v $(CURDIR):/mnt/project \
 		$(1)
 
 .PHONY: docker_bash
-docker_bash: $(DOWNLOAD_DIR) $(BUILD_DIR) update
+docker_bash: $(DOWNLOAD_DIR) $(BUILD_DIR)
 	$(call docker_run, bash)
 
 .PHONY: build_obmc
