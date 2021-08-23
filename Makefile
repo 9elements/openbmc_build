@@ -1,13 +1,13 @@
 DOWNLOAD_DIR ?= $(CURDIR)/downloads
 BUILD_DIR ?= $(CURDIR)/build
-TARGET ?= e3c246d4i
+TARGET ?= gen3
 
 docker_name = openbmc_build
 docker_tag = v2
 
 project_name = openbmc
 project_git_repo = git@github.com:9elements/openbmc.git
-project_git_branch = ibm_covi
+project_git_branch = gen3
 project_dir = $(CURDIR)/openbmc
 
 UID ?= $(shell id -u)
