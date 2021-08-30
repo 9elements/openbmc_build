@@ -45,6 +45,7 @@ docker_bash: $(DOWNLOAD_DIR) $(BUILD_DIR)
 
 .PHONY: build_obmc
 build_obmc: $(DOWNLOAD_DIR) $(BUILD_DIR) $(CURDIR)/run.sh | $(project_dir)
+	rm -rf $(BUILD_DIR)/tmp/work/$(project_git_branch)-openbmc-linux-gnueabi/obmc-phosphor-image/
 	$(call docker_run, /mnt/project/run.sh $(TARGET))
 
 .PHONY: clean
