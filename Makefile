@@ -35,6 +35,7 @@ $(DOWNLOAD_DIR) $(BUILD_DIR):
 
 # Run the docker with $(1) as a command
 docker_run = docker run --rm -v $(CURDIR):/mnt/project:Z \
+		--privileged  -v $$(readlink -f $$SSH_AUTH_SOCK):/ssh-agent:z -e SSH_AUTH_SOCK=/ssh-agent \
 		-it \
 		$(docker_name):$(docker_tag) \
 		$(1)
