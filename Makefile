@@ -1,6 +1,6 @@
 DOWNLOAD_DIR ?= $(CURDIR)/downloads
 BUILD_DIR ?= $(CURDIR)/build
-TARGET ?= gen3
+TARGET ?= genesis3
 
 docker_name = openbmc_build
 docker_tag = v2
