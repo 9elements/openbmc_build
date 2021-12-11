@@ -25,10 +25,10 @@ update: $(project_dir)
 	cd $(project_dir); git fetch --multiple origin
 
 .PHONY: build_docker
-build_docker: Dockerfile
+build_docker: $(CURDIR)/docker/Dockerfile
 	docker build --build-arg USER_ID=$(UID) \
 	--build-arg GROUP_ID=$(GID) \
-	$(CURDIR) -t $(docker_name):$(docker_tag)
+	$(CURDIR)/docker -t $(docker_name):$(docker_tag)
 
 $(DOWNLOAD_DIR) $(BUILD_DIR):
 	mkdir -p -m a+rw $@
