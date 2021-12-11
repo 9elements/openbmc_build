@@ -3,7 +3,7 @@ BUILD_DIR ?= $(CURDIR)/build
 TARGET ?= genesis3
 
 docker_name = openbmc_build
-docker_tag = v2
+docker_tag = v3
 
 project_name = openbmc
 project_git_repo = git@github.com:9elements/openbmc.git
