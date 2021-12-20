@@ -3,6 +3,7 @@ BUILD_DIR ?= $(CURDIR)/build
 TARGET ?= genesis3
 
 docker_name = openbmc_build
+docker_file = Dockerfile
 docker_tag = v3
 
 project_name = openbmc
@@ -25,10 +26,10 @@ update: $(project_dir)
 	cd $(project_dir); git fetch --multiple origin
 
 .PHONY: build_docker
-build_docker: $(CURDIR)/docker/Dockerfile
+build_docker: Dockerfile
 	docker build --build-arg USER_ID=$(UID) \
 	--build-arg GROUP_ID=$(GID) \
-	$(CURDIR)/docker -t $(docker_name):$(docker_tag)
+	-t $(docker_name):$(docker_tag) - < $(docker_file)
 
 $(DOWNLOAD_DIR) $(BUILD_DIR):
 	mkdir -p -m a+rw $@
