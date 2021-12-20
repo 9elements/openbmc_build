@@ -1,7 +1,7 @@
 # Build openbmc
 
 First build the docker image `make build_docker`
-run `make` to build openbmc for the e3c246d4i, which is the
+run `make` to build openbmc for the ibm/genesis3, which is the
 default target for now. Use the environment variable `TARGET`
 to modify this.
 
