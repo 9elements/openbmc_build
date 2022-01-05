@@ -29,7 +29,7 @@ update: $(project_dir)
 build_docker: Dockerfile
 	docker build --build-arg USER_ID=$(UID) \
 	--build-arg GROUP_ID=$(GID) \
-	-t $(docker_name):$(docker_tag) - < $(docker_file)
+	-t $(docker_name):$(docker_tag)_$(UID) - < $(docker_file)
 
 $(DOWNLOAD_DIR) $(BUILD_DIR):
 	mkdir -p -m a+rw $@
@@ -38,7 +38,7 @@ $(DOWNLOAD_DIR) $(BUILD_DIR):
 docker_run = docker run --rm -v $(CURDIR):/mnt/project:Z \
 		--privileged  -v $$(readlink -f $$SSH_AUTH_SOCK):/ssh-agent:z -e SSH_AUTH_SOCK=/ssh-agent \
 		-it \
-		$(docker_name):$(docker_tag) \
+		$(docker_name):$(docker_tag)_$(UID) \
 		$(1)
 
 .PHONY: docker_bash
