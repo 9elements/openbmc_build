@@ -7,7 +7,7 @@ docker_file = Dockerfile
 docker_tag = v3
 
 project_name = openbmc
-project_git_repo = git@github.com:9elements/openbmc.git
+project_git_repo = https://github.com/9elements/openbmc.git
 project_git_branch = gen3
 project_dir = $(CURDIR)/openbmc
 
