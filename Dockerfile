@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-LABEL maintainer="Patrik Tesarik <patrik.tesarik@9elements.com>"
+LABEL org.opencontainers.image.authors="patrick.rudolph@9elements.com, arthur.heymans@9elements.com, christian.walter@9elements.com, patrik.tesarik@9elements.com"
 
 ARG USER_ID
 ARG GROUP_ID
