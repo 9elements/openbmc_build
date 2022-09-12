@@ -27,7 +27,9 @@ update: $(project_dir)
 
 .PHONY: build_docker
 build_docker: Dockerfile
-	docker build --build-arg USER_ID=$(UID) \
+	docker build
+	--network=host \
+	--build-arg USER_ID=$(UID) \
 	--build-arg GROUP_ID=$(GID) \
 	-t $(docker_name):$(docker_tag)_$(UID) - < $(docker_file)
 
