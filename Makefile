@@ -27,7 +27,7 @@ update: $(project_dir)
 
 .PHONY: build_docker
 build_docker: Dockerfile
-	docker build
+	docker build \
 	--network=host \
 	--build-arg USER_ID=$(UID) \
 	--build-arg GROUP_ID=$(GID) \
@@ -38,6 +38,7 @@ $(DOWNLOAD_DIR) $(BUILD_DIR):
 
 # Run the docker with $(1) as a command
 docker_run = docker run --rm -v $(CURDIR):/mnt/project:Z \
+		--ulimit nofile=4096:8192  \
 		--privileged \
 		-it \
 		$(docker_name):$(docker_tag)_$(UID) \
