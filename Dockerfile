@@ -19,9 +19,12 @@ RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Berlin
 RUN apt install -y \
-    gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip \
+    gawk wget git diffstat unzip texinfo gcc-10 g++-10 build-essential chrpath socat cpio python3 python3-pip \
     python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa \
-    libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev zstd liblz4-tool
+    libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev zstd liblz4-tool ctags vim
+
+RUN sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 ; \
+    sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
 
 USER devuser
 ENV TERM xterm
